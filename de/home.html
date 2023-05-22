@@ -58,4 +58,34 @@
 		<button onclick="location.href='https://forms.gle/EyFkvnree9cGZA5CA'">지원하기</button>
 	</div>
 </body>
+<script>
+	// API 키
+	const apiKey = 'YOUR_API_KEY';
+
+	// 요청 페이로드
+	const payload = {
+	prompt: 'Hello, how are you?'
+	};
+
+	// 요청 구성
+	const config = {
+	headers: {
+		'Content-Type': 'application/json',
+		'Authorization': `Bearer ${apiKey}`
+	}
+	};
+
+	// API 요청
+	axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', payload, config)
+	.then(response => {
+		// API 응답 처리
+		const message = response.data.choices[0].text;
+		document.getElementById('response').innerHTML = message;
+	})
+	.catch(error => {
+		console.error(error);
+	});
+
+
+</script>
 </html>

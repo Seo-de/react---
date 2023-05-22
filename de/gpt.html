@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ChatGPT API 예시</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+	<h1>ChatGPT API 예시</h1>
+	<div>
+		<label for="prompt">메시지:</label>
+		<input type="text" id="prompt" name="prompt">
+		<button onclick="sendRequest()">보내기</button>
+	</div>
+	<div>
+		<label for="response">응답:</label>
+		<div id="response"></div>
+	</div>
+	<script>
+		function sendRequest() {
+			const apiKey = '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';
+			const prompt = document.getElementById('prompt').value;
+			const payload = {
+                prompt: prompt
+                };
+                const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                }
+                };
+                axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', payload, config)
+                .then(response => {
+                    const message = response.data.choices[0].text;
+                    document.getElementById('response').innerHTML = message;
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert("axios 에러");
+                });
+		}
+	</script>
+</body>
+</html>
