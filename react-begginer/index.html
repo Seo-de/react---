@@ -1,1 +1,31 @@
-// 자바 스크립트로 작성 - 바닐라 자바스크립트 // 리액트로 작성
+<!DOCTYPE html>
+<html lang="ko">
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    function App() {
+      //   const data = React.useState(0);
+      //   const counter = data[0];
+      //   const modifier = data[1];
+
+      // 위에 3줄을 한 줄로 바꾼 코드
+      const [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        setCounter(counter + 1);
+      };
+      return (
+        <div>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={onClick}>Click me</button>
+        </div>
+      );
+    }
+    // 최초로 호출될 때 작동
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
