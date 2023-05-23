@@ -1,0 +1,10 @@
+/* css 이름을 적용시킬 파일 이름과 동일하게 적고 
+.module.css를 작성시킨 후 해당 파일에 들어가서 import 시켜주면
+해당 파일에만 적용이 됨
+css 파일들의 이름이 같아도 독립적이라 
+서로에게 영향을 주지 않기 때문에 이름 겹쳐도 괜찮아*/
+
+.btn {
+  color: white;
+  background-color: tomato;
+}
